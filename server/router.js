@@ -14,7 +14,7 @@ router.route('/register').post(upload.fields([
 ]),register)
 router.route('/login').post(login)
 router.route('/logout').post(VerifyTokenLogout,logout)
-router.route('/user').get(getUser)
+router.route('/user').get(VerifyToken,getUser)
 router.route('/update').post(VerifyToken,changePassword)
 router.route('/updateuser').post(VerifyToken,updateAccountDetails)
 router.route('/mailer').post(mailer)
