@@ -90,7 +90,7 @@ const login =async(req,res)=>{
     else{
         const {accessToken} = await generateTokens(user._id)
         console.log("login success");
-        return res.status(200).cookie('accessToken',accessToken,{secure:true,httpOnly:true,sameSite:false})
+        return res.status(200).cookie('accessToken',accessToken,{secure:true,httpOnly:true,sameSite:"Lax"})
        .json({user:user,accessToken})
     }
 }
@@ -98,7 +98,7 @@ const logout = async(req,res)=>{
 const user =await User.findById(req?.user?._id)
 console.log(user);
 return res.status(200)
-.clearCookie('accessToken',{secure:true,httpOnly:true,sameSite:false}).json({message:"Logout success",user})
+.clearCookie('accessToken',{secure:true,httpOnly:true,sameSite:'Lax'}).json({message:"Logout success",user})
 }
 const getUser = async(req,res)=>{
     const user = await req.user
